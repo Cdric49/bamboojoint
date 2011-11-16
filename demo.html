@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="bamboojoint.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                function doIt () {
+                    var source = $("#input").val();
+                    var rendered = BambooJoint.render(source);
+                    if (!rendered) {
+                        $("#output").css("opacity", .2);
+                        $("#caption").html("<i>(couldn't render)</i>");
+                        return;
+                    }
+                    $("#output").css("opacity", 1).empty().append(rendered.canvas);
+                    if (rendered.caption)
+                        $("#caption").html("<i>Caption: </i>").append($("<span />").text(rendered.caption));
+                    else
+                        $("#caption").html("<i>(no caption)</i>");
+                }
+                $("#input").keyup(function () {
+                    setTimeout(doIt, 1)
+                });
+                doIt();
+            });
+        </script>
+
+    </head>
+    <body>
+        <textarea id="input" cols=80 rows=20>$$Wc13m21 An example Go board
+$$ . . . . . . |
+$$ . X . O . . |
+$$ . 1 . . . 2 |
+$$ . . ? ? ? . |
+$$ # . ? ? ? . |
+$$ . . , . . . |
+$$ . a b . . . |
+$$ . . . * . . |
+$$ . . W . . . |
+$$ ------------</textarea>
+        <br />
+        <br />
+        <div id="output"></div>
+        <br />
+        <div id="caption"></div>
+    </body>
+</html>
