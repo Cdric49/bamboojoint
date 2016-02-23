@@ -42,4 +42,4 @@ will be rendered like this:
 
 ![Example](example.png)
 
-Have a look at demo.html to play around with it.
+Have a look at [demo.html](http://bamboojoint.googlecode.com/hg/demo.html) to play around with it.
